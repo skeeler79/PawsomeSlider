@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Testimonial Slider</title>
+    <style>
+      /* CSS code here */
+      .slider {
+        width: 30%;
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .slider-container {
+        width: calc(100% * 3);
+        height: 100%;
+        /* position: absolute; */
+        top: 0;
+        left: 0;
+        display: flex;
+      }
+
+      .testimonial {
+        width: 33.333%;
+        height: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .testimonial-text {
+        font-size: 20px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-author {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .slider .slider-container .testimonial:first-child {
+        margin-left: 0;
+      }
+
+      .slider .slider-container .testimonial:last-child {
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider">
+      <div class="slider-container">
+        <div class="testimonial">
+          <p class="testimonial-text">
+            ${displayTestimonial.quote}
+          </p>
+          <p class="testimonial-author">${testimonial.name}</p>
+        </div>
+        <!-- <div class="testimonial">
+          <p class="testimonial-text">
+            Sed vitae eros nec dolor commodo lacinia sit amet ut nibh. Quisque a
+            lacinia odio. Duis laoreet augue enim, at euismod magna bibendum
+            vel. Nam a urna eget magna lacinia commodo sit amet eget magna.
+          </p>
+          <p class="testimonial-author">- Jane Doe</p>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">
+            Praesent commodo, est a rutrum accumsan, nisi mauris euismod turpis,
+            in consequat ex massa a metus. Aliquam ultricies posuere ex, vitae
+            fringilla arcu imperdiet vel. Sed tincidunt sem non consequat
+            mollis.
+          </p>
+          <p class="testimonial-author">- John Smith</p>
+        </div> -->
+      </div>
+    </div>
+
+    <script>
+         const testimonial = [
+        {
+            quote: "We used Pawsome for the first time and couldn/’t be more please. Eli had a great experience spending time with this beautiful family; going on long walks and snuggling. We/’ve used traditional boarding facilities previously and would get reports that he was stressed and anxious. With Nat and family he was happy and loved. I felt relaxed on our vacation knowing he was safe and cared for by a family. Eli will definitely be staying with Pawsome again!",
+            name: "Eli"
+
+        },
+        {
+            quote: "Our fur-boy Philip had a WONDERFUL two-night stay with Pawsome family. It was his first time boarding anywhere but he had the best time ever! Not only did he have so much attention from Nat and her family but also lots of walking time outside. Now he almost wags his tail off with overflowing joy whenever he sees Nat! We loved getting a daily update while his stay. It's a great relief to know our furmily member is well taken care of when we can't take him with us. Thank you, Pawsome! Philip can not wait to go back! :)",
+            name: "Philip/'s Mom"
+        },
+        {
+            quote: "What a wonderful experience we had boarding our dog TingTing at Pawsome with Nat and her family. The service they provide is top notch. They loved and cared for TingTing like she was their own for two weeks in their home while we were out the country. They took for her long walks in the park (sometimes 3 miles at time!) and they taught her how to Hi-5! We new from the moment we met Nat and her family that TingTing was in the best hands. And she was. Thank you Nat and family! We highly recommend Pawsome to anyone considering boarding their dog.",
+            name: "Leigh F."
+        }
+         ]
+
+         function slideThrough(){
+            for (let i= 0; i <=testimonial.length; i++){
+                const displayTestimonial =  testimonial[i];
+                return displayTestimonial;
+            }
+         }
+         slideThrough();
+      // JS code here
+      const slider = document.querySelector(".slider");
+      const sliderContainer = slider.querySelector(".slider-container");
+    //   const testimonials = slider.querySelectorAll(".testimonial");
+      const testimonialWidth = slider.offsetWidth / 1;
+      let testimonialIndex = 0;
+
+      setInterval(() => {
+        testimonialIndex++;
+        if (testimonialIndex > testimonial.length - 1) {
+          testimonialIndex = 0;
+        }
+        sliderContainer.style.transform = `translateX(-${
+          testimonialIndex * testimonialWidth
+        }px)`;
+      }, 5000);
+    </script>
+  </body>
+</html>

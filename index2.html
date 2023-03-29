@@ -1,11 +1,13 @@
-
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <title>Testimonial Slider</title>
     <style>
+      .testimonial-slider {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+      }
+
       .testimonial {
         display: none;
       }
@@ -16,25 +18,14 @@
     </style>
   </head>
   <body>
-    <div class="testimonials">
-      <div class="testimonial active">
-        <p class="quote"></p>
-        <p class="name"></p>
-      </div>
-
-      <div class="testimonial">
-        <p class="quote"></p>
-        <p class="name"></p>
-      </div>
-
+    <div class="testimonial-slider">
       <div class="testimonial">
         <p class="quote"></p>
         <p class="name"></p>
       </div>
     </div>
-
     <script>
-      const testimonials = [
+      const testimonial = [
         {
           quote:
             "We used Pawsome for the first time and couldn't be more pleased...",
@@ -52,18 +43,16 @@
         },
       ];
 
-      const quoteEls = document.querySelectorAll(".quote");
-      const nameEls = document.querySelectorAll(".name");
+      const quoteEl = document.querySelector(".quote");
+      const nameEl = document.querySelector(".name");
 
       let index = 0;
 
       function showTestimonial() {
-        const { quote, name } = testimonials[index];
+        const { quote, name } = testimonial[index];
 
-        for (let i = 0; i < quoteEls.length; i++) {
-          quoteEls[i].textContent = quote;
-          nameEls[i].textContent = name;
-        }
+        quoteEl.textContent = quote;
+        nameEl.textContent = name;
 
         const activeTestimonial = document.querySelector(".testimonial.active");
 
@@ -77,7 +66,7 @@
 
         index++;
 
-        if (index === testimonials.length) {
+        if (index === testimonial.length) {
           index = 0;
         }
 
